@@ -9,7 +9,7 @@
  * License: GPLv2
  * Text Domain: mw-universal
  * Domain Path: /languages/
- * Version: 1.1.0
+ * Version: 1.2.0
  */
 
 namespace MW\UniversalElements;
@@ -18,28 +18,26 @@ use function Breakdance\Util\getDirectoryPathRelativeToPluginFolder;
 
 add_action('breakdance_loaded', function () {
     
-    // ELEMENTE - Technischer Slug: 'mw-universal' (Kleingeschrieben, ohne Backslash!)
+    // WICHTIG: Hier jetzt 'mw_universal' mit UNTERSTRICH nutzen
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/elements',
-        'mw-universal', 
+        'mw_universal', 
         'element',
         'MW Universal Elements',
         false
     );
 
-    // MAKROS
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/macros',
-        'mw-universal',
+        'mw_universal',
         'macro',
         'MW Universal Macros',
         false,
     );
 
-    // PRESETS
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/presets',
-        'mw-universal',
+        'mw_universal',
         'preset',
         'MW Universal Presets',
         false,
