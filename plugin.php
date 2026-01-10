@@ -1,46 +1,47 @@
 <?php
 
 /**
- * Plugin Name: Breakdance Custom Elements
- * Plugin URI: https://breakdance.com/
- * Description: Boilerplate plugin to save your custom elements created with Element Studio.
- * Author: Breakdance
- * Author URI: https://breakdance.com/
+ * Plugin Name: MW Universal Elements
+ * Plugin URI: https://mwears.at/
+ * Description: Zentrale Bibliothek für eigene High-End Komponenten in Oxygen 6 und Breakdance.
+ * Author: Martin Winter
+ * Author URI: https://mwears.at/
  * License: GPLv2
- * Text Domain: breakdance
+ * Text Domain: mw-universal
  * Domain Path: /languages/
- * Version: 0.0.1
+ * Version: 1.0.0
  */
 
-namespace BreakdanceCustomElements;
+namespace MW\UniversalElements;
 
 use function Breakdance\Util\getDirectoryPathRelativeToPluginFolder;
 
 add_action('breakdance_loaded', function () {
+    
+    // Registriert den Speicherort für neue ELEMENTE
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/elements',
-        'BreakdanceCustomElements',
+        'MW\UniversalElements', // Dein technischer Namespace
         'element',
-        'Custom Elements',
+        'MW Universal Elements', // So erscheint es im Studio-Menü
         false
     );
 
+    // Registriert den Speicherort für neue MAKROS
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/macros',
-        'BreakdanceCustomElements',
+        'MW\UniversalElements',
         'macro',
-        'Custom Macros',
+        'MW Universal Macros',
         false,
     );
 
+    // Registriert den Speicherort für neue PRESETS (Design-Vorlagen)
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/presets',
-        'BreakdanceCustomElements',
+        'MW\UniversalElements',
         'preset',
-        'Custom Presets',
+        'MW Universal Presets',
         false,
     );
-},
-    // register elements before loading them
-    9
-);
+}, 10);
