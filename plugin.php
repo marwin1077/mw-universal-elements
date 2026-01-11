@@ -9,7 +9,7 @@
  * License: GPLv2
  * Text Domain: mw-universal
  * Domain Path: /languages/
- * Version: 1.2.0
+ * Version: 1.3.2
  */
 
 namespace MW\UniversalElements;
@@ -18,7 +18,7 @@ use function Breakdance\Util\getDirectoryPathRelativeToPluginFolder;
 
 add_action('breakdance_loaded', function () {
     
-    // WICHTIG: Hier jetzt 'mw_universal' mit UNTERSTRICH nutzen
+    // 1. Speicherslot für ELEMENTE
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/elements',
         'mw_universal', 
@@ -27,14 +27,16 @@ add_action('breakdance_loaded', function () {
         false
     );
 
+    // 2. Speicherslot für MAKROS
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/macros',
         'mw_universal',
         'macro',
         'MW Universal Macros',
-        false,
+        false
     );
 
+    // 3. Speicherslot für PRESETS
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/presets',
         'mw_universal',
@@ -42,4 +44,14 @@ add_action('breakdance_loaded', function () {
         'MW Universal Presets',
         false,
     );
+
+    // 4. Eigene KATEGORIE für das "+ ADD" Menü registrieren
+    add_filter('breakdance_element_categories', function($categories) {
+        $categories[] = [
+            'name' => 'MW Universal',
+            'slug' => 'mw_universal',
+        ];
+        return $categories;
+    });
+
 }, 10);
