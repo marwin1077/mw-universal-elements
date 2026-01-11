@@ -4,8 +4,8 @@ namespace MW\UniversalElements;
 // 1. Kategorien im System registrieren
 add_action('breakdance_loaded', function() {
     // Standard-Kategorie
-    if (function_exists('\Breakdance\Elements\registerCategory')) {
-        \Breakdance\Elements\registerCategory('mw_universal', 'MW Universal');
+    // if (function_exists('\Breakdance\Elements\registerCategory')) {
+        // \Breakdance\Elements\registerCategory('mw_universal', 'MW Universal');
         
         // Dynamische Kategorien aus der Datenbank laden
         $extra_cats = get_option('mw_universal_extra_categories', '');
